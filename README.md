@@ -37,7 +37,7 @@ python3 path/to/directory/ball_tracking.py
 
 ## Outputs
 
-The following video shows ane example of the ball tracking detection.  
+The following video shows ane example of the ball being tracked.  
 ![alt text](https://github.com/alonsocanov/Color_Tracking/blob/master/output/output.gif "Video Tracking")
 
 

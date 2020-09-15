@@ -13,8 +13,7 @@ def availableFiles(path) -> list:
     if len(full_path):
         file = full_path[0]
     else:
-        error = ' '.join(['Could not find file:', path])
-        sys.exit(error)
+        file = None
     return file
 
 
@@ -74,7 +73,7 @@ def main():
 
     checkWebcamAvalability(video)
     ret, frame = video.read()
-    # height and whith
+    # height and width
     h, w = frame.shape[:2]
 
     win_name = 'Frame'
@@ -91,6 +90,8 @@ def main():
     hsv_upper = hsv2cvhsv(np.array([65, 100, 100]))
 
     pts = list()
+
+    # out = cv2.VideoWriter('output/out.avi', cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 24, (w // 2, h // 2))
 
     print('Press Q to quit')
 
@@ -126,7 +127,8 @@ def main():
 
             except:
                 pass
-
+        # save video feed
+        # out.write(frame)
         img = frame
         cv2.imshow(win_name, img)
 

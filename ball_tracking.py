@@ -113,7 +113,15 @@ def main():
                 c = max(cnts, key=cv2.contourArea)
                 ((x, y), r) = cv2.minEnclosingCircle(c)
                 M = cv2.moments(c)
-                center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
+                try:
+                    cx = int(M["m10"] / M["m00"])
+                except ZeroDivisionError:
+                    cx = w
+                try:
+                    cy = int(M["m01"] / M["m00"])
+                except ZeroDivisionError:
+                    cy = h
+                center = (cx, cy)
                 if r > 10:
                     cv2.circle(frame, (int(x), int(y)), int(r), (0, 255, 0), 4)
                     cv2.circle(frame, center, 1, (0, 0, 255), 5)
